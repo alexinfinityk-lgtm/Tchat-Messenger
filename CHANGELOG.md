@@ -1,114 +1,40 @@
 # Changelog
 
-## [Latest] - 2025-10-20
+## [2.0.3](https://github.com/humanwhocodes/object-schema/compare/v2.0.2...v2.0.3) (2024-04-01)
 
-### ✨ Added Custom TON Connect Button
 
-**Changed the wallet connection button to match TON's design:**
+### Bug Fixes
 
-#### What Changed:
+* Ensure test files are not including in package ([6eeb32c](https://github.com/humanwhocodes/object-schema/commit/6eeb32cc76a3e37d76b2990bd603d72061c816e0)), closes [#19](https://github.com/humanwhocodes/object-schema/issues/19)
 
-1. **Custom Blue Button Design**
-   - Bright blue background (#45AEF5)
-   - White text with "Connect Wallet"
-   - Wallet icon on the left
-   - Telegram icon on the right
-   - Rounded corners with shadow
-   - Hover effects for better UX
+## [2.0.2](https://github.com/humanwhocodes/object-schema/compare/v2.0.1...v2.0.2) (2024-01-10)
 
-2. **Updated Components**
-   - `components/wallet/WalletButton.tsx` - Custom button implementation
-   - `app/page.tsx` - Improved spacing
-   - `app/globals.css` - Added TON Connect styling
 
-#### Button Features:
+### Bug Fixes
 
-- **Before Connection**: Shows custom blue button
-- **After Connection**: Shows default TON Connect button with wallet info
-- **Interactive**: Opens TON Connect modal on click
-- **Responsive**: Works on mobile and desktop
-- **Accessible**: Proper hover and focus states
+* WrapperError should be an actual error ([2523f01](https://github.com/humanwhocodes/object-schema/commit/2523f014168167e5a40bb63e0cc03231b2c0f1bf))
 
-#### Visual Design:
+## [2.0.1](https://github.com/humanwhocodes/object-schema/compare/v2.0.0...v2.0.1) (2023-10-20)
 
-```
-┌─────────────────────────────────────────────┐
-│  [Wallet] Connect Wallet [Telegram]         │
-│    👛         Text           📱             │
-└─────────────────────────────────────────────┘
-     Blue (#45AEF5) with white text
-```
 
-#### Code Structure:
+### Bug Fixes
 
-```typescript
-// Custom button when not connected
-<button className="bg-[#45AEF5] ...">
-  <WalletIcon />
-  <span>Connect Wallet</span>
-  <TelegramIcon />
-</button>
+* Custom properties should be available on thrown errors ([6ca80b0](https://github.com/humanwhocodes/object-schema/commit/6ca80b001a4ffb678b9b5544fc53322117374376))
 
-// Default button when connected
-<TonConnectButton />
-```
+## [2.0.0](https://github.com/humanwhocodes/object-schema/compare/v1.2.1...v2.0.0) (2023-10-18)
 
-#### Usage:
 
-1. **Homepage**: Prominently displayed on landing page
-2. **Header**: Available in top navigation
-3. **All Pages**: Accessible throughout the app
+### ⚠ BREAKING CHANGES
 
-#### Benefits:
+* Throw custom errors instead of generics.
 
-✅ Modern, clean design matching TON standards
-✅ Clear call-to-action for users
-✅ Better visibility than default button
-✅ Consistent with TON ecosystem design
-✅ Improved user experience
+### Features
 
----
+* Throw custom errors instead of generics. ([c6c01d7](https://github.com/humanwhocodes/object-schema/commit/c6c01d71eb354bf7b1fb3e883c40f7bd9b61647c))
 
-## Previous Updates
+### [1.2.1](https://www.github.com/humanwhocodes/object-schema/compare/v1.2.0...v1.2.1) (2021-11-02)
 
-### Initial Release - 2025-10-20
 
-- ✅ Complete TON Messenger application
-- ✅ Dark mode UI
-- ✅ TON Connect 2.0 integration
-- ✅ NFT Wallet
-- ✅ TON DNS
-- ✅ World ID verification
-- ✅ Temporary email rental
-- ✅ Real-time chat interface
-- ✅ 54 files created
-- ✅ Full documentation
+### Bug Fixes
 
----
-
-## Testing the Changes
-
-1. **Refresh your browser**: http://localhost:3000
-2. **Look for the blue button**: "Connect Wallet" on homepage
-3. **Click to connect**: Opens TON Connect modal
-4. **Connect your wallet**: Scan QR with Tonkeeper/Tonhub
-5. **See the change**: Button shows wallet info after connection
-
----
-
-## Browser Refresh
-
-If you don't see the changes:
-
-```powershell
-# Hard refresh in browser
-Ctrl + Shift + R
-
-# Or clear Next.js cache
-Remove-Item -Recurse .next
-npm run dev
-```
-
----
-
-**The custom blue button is now live!** 🎉
+* Never return original object from individual config ([5463c5c](https://www.github.com/humanwhocodes/object-schema/commit/5463c5c6d2cb35a7b7948dffc37c899a41d1775f))

@@ -1,311 +1,234 @@
-# Tchat Messenger 💬
+# JavaScript ObjectSchema Package
 
-A modern, decentralized messaging platform built on TON blockchain with integrated NFT wallet, World ID verification, and temporary email rental.
+by [Nicholas C. Zakas](https://humanwhocodes.com)
 
-## 🌟 Features
+If you find this useful, please consider supporting my work with a [donation](https://humanwhocodes.com/donate).
 
-- **🔐 TON Connect 2.0** - Seamless wallet connection and authentication
-- **💬 Real-time Messaging** - Secure peer-to-peer communication
-- **👛 NFT Wallet** - View and manage your TON NFT collection
-- **🌐 TON DNS** - Human-readable blockchain addresses
-- **✓ World ID Verification** - Proof of personhood for enhanced security
-- **📧 Temporary Email** - Disposable email addresses via Tmarket
-- **🌙 Dark Mode** - Beautiful dark UI following Apple design guidelines
+## Overview
 
-## 🚀 Quick Start
+A JavaScript object merge/validation utility where you can define a different merge and validation strategy for each key. This is helpful when you need to validate complex data structures and then merge them in a way that is more complex than `Object.assign()`.
 
-### Prerequisites
+## Installation
 
-- **Node.js** v18+ ([Download](https://nodejs.org/))
-- **npm** or **yarn**
-- TON wallet (Tonkeeper, Tonhub, etc.)
-
-### Installation
-
-1. **Install Node.js** (if not already installed)
-   ```bash
-   # Download from https://nodejs.org/
-   # After installation, verify:
-   node --version
-   npm --version
-   ```
-
-2. **Install Dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Configure Environment Variables**
-   ```bash
-   # Copy the example file
-   cp .env.example .env.local
-   
-   # Edit .env.local with your API keys
-   ```
-
-4. **Start Development Server**
-   ```bash
-   # Using the startup script (recommended)
-   .\start.ps1
-   
-   # Or manually
-   npm run dev
-   ```
-
-5. **Open your browser**
-   ```
-   http://localhost:3000
-   ```
-
-## 🔧 Configuration
-
-### Required Environment Variables
-
-Create a `.env.local` file with the following:
-
-```env
-# TON Network
-NEXT_PUBLIC_TON_NETWORK=testnet
-NEXT_PUBLIC_MANIFEST_URL=http://localhost:3000/tonconnect-manifest.json
-
-# NextAuth
-NEXTAUTH_SECRET=your-secret-here
-NEXTAUTH_URL=http://localhost:3000
-
-# World.org (Optional)
-NEXT_PUBLIC_WORLD_APP_ID=app_staging_xxx
-WORLD_API_KEY=your-world-api-key
-NEXT_PUBLIC_WORLD_ACTION=verify_human
-
-# Tmarket Email (Optional)
-TMARKET_API_KEY=your-tmarket-api-key
-
-# TON API (Optional, for NFTs)
-NEXT_PUBLIC_TON_API_KEY=your-ton-api-key
-```
-
-### Obtaining API Keys
-
-1. **World ID (World.org)**
-   - Visit https://developer.worldcoin.org/
-   - Create an app to get your App ID
-   - Use for human verification feature
-
-2. **TON API**
-   - Visit https://tonconsole.com/
-   - Sign up for API access
-   - Use for NFT and transaction data
-
-3. **Tmarket**
-   - Contact Tmarket for API access
-   - Configure temporary email rental
-
-## 📁 Project Structure
+You can install using either npm:
 
 ```
-ton_messenger_nft_wallet/
-├── app/                    # Next.js 14 App Router
-│   ├── chat/              # Messaging interface
-│   ├── wallet/            # Wallet management
-│   ├── nft/               # NFT collection viewer
-│   ├── dns/               # TON DNS management
-│   ├── verify/            # World ID verification
-│   ├── email/             # Temporary email rental
-│   └── api/               # API routes
-├── components/            # React components
-│   ├── layout/           # Layout components (Sidebar, Header)
-│   ├── chat/             # Chat components
-│   ├── wallet/           # Wallet components
-│   ├── nft/              # NFT components
-│   ├── ui/               # Reusable UI components
-│   └── providers/        # Context providers
-├── lib/                   # Utilities and helpers
-│   ├── ton/              # TON blockchain utilities
-│   └── api/              # API clients
-├── hooks/                 # Custom React hooks
-├── types/                 # TypeScript type definitions
-├── public/                # Static assets
-└── styles/                # Global styles
+npm install @humanwhocodes/object-schema
 ```
 
-## 🎨 UI/UX Design
+Or Yarn:
 
-The application follows **Apple's Human Interface Guidelines** for dark mode:
-
-- **Color Scheme**: Deep blacks with vibrant accent colors
-- **Typography**: System fonts with proper hierarchy
-- **Spacing**: Consistent padding and margins
-- **Interactions**: Smooth transitions and hover states
-- **Accessibility**: High contrast ratios and readable text
-
-### Color Palette
-
-- **Background**: `#000000` (Pure black)
-- **Surface**: `#1C1C1E` (Elevated black)
-- **TON Blue**: `#0088CC`
-- **Accent Colors**: Green, Orange, Red, Purple
-
-## 🔗 Key Technologies
-
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Blockchain**: TON Connect 2.0
-- **Authentication**: NextAuth.js
-- **Verification**: World ID (Worldcoin)
-- **State Management**: React Hooks + Zustand (optional)
-
-## 📱 Features Overview
-
-### 1. Messaging
-- Real-time peer-to-peer chat
-- Message history
-- User presence indicators
-- Encrypted communications
-
-### 2. Wallet
-- View TON balance
-- Send transactions
-- Transaction history
-- Address management
-
-### 3. NFT Collection
-- Browse your NFTs
-- View NFT details
-- Collection statistics
-- NFT metadata display
-
-### 4. TON DNS
-- Search and register domains
-- Domain management
-- Resolve addresses to names
-- Transfer domains
-
-### 5. World ID Verification
-- Proof of personhood
-- Enhanced security
-- Verified badge
-- Bot prevention
-
-### 6. Temporary Email
-- Rent disposable emails
-- Receive messages
-- Auto-expiring addresses
-- Privacy protection
-
-## 🛠️ Development
-
-### Available Scripts
-
-```bash
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
-
-# Run linting
-npm run lint
+```
+yarn add @humanwhocodes/object-schema
 ```
 
-### Adding New Features
+## Usage
 
-1. Create component in `components/`
-2. Add page in `app/` directory
-3. Define types in `types/index.ts`
-4. Add utilities in `lib/`
-5. Create custom hooks in `hooks/`
+Use CommonJS to get access to the `ObjectSchema` constructor:
 
-## 🔒 Security Best Practices
+```js
+const { ObjectSchema } = require("@humanwhocodes/object-schema");
 
-- Never commit `.env.local` or API keys
-- Use environment variables for sensitive data
-- Validate all user inputs
-- Implement proper error handling
-- Use HTTPS in production
-- Regular security audits
+const schema = new ObjectSchema({
 
-## 🚢 Deployment
+    // define a definition for the "downloads" key
+    downloads: {
+        required: true,
+        merge(value1, value2) {
+            return value1 + value2;
+        },
+        validate(value) {
+            if (typeof value !== "number") {
+                throw new Error("Expected downloads to be a number.");
+            }
+        }
+    },
 
-### Deploy to Vercel
+    // define a strategy for the "versions" key
+    version: {
+        required: true,
+        merge(value1, value2) {
+            return value1.concat(value2);
+        },
+        validate(value) {
+            if (!Array.isArray(value)) {
+                throw new Error("Expected versions to be an array.");
+            }
+        }
+    }
+});
 
-```bash
-# Install Vercel CLI
-npm i -g vercel
+const record1 = {
+    downloads: 25,
+    versions: [
+        "v1.0.0",
+        "v1.1.0",
+        "v1.2.0"
+    ]
+};
 
-# Deploy
-vercel
+const record2 = {
+    downloads: 125,
+    versions: [
+        "v2.0.0",
+        "v2.1.0",
+        "v3.0.0"
+    ]
+};
+
+// make sure the records are valid
+schema.validate(record1);
+schema.validate(record2);
+
+// merge together (schema.merge() accepts any number of objects)
+const result = schema.merge(record1, record2);
+
+// result looks like this:
+
+const result = {
+    downloads: 75,
+    versions: [
+        "v1.0.0",
+        "v1.1.0",
+        "v1.2.0",
+        "v2.0.0",
+        "v2.1.0",
+        "v3.0.0"
+    ]
+};
 ```
 
-### Environment Variables for Production
+## Tips and Tricks
 
-Set all required environment variables in your hosting platform:
-- Update `NEXT_PUBLIC_MANIFEST_URL` to your production domain
-- Set `NEXTAUTH_URL` to production URL
-- Configure all API keys securely
+### Named merge strategies
 
-## 📚 Resources
+Instead of specifying a `merge()` method, you can specify one of the following strings to use a default merge strategy:
 
-- [TON Documentation](https://docs.ton.org/)
-- [TON Connect](https://docs.ton.org/develop/dapps/ton-connect/overview)
-- [Next.js Docs](https://nextjs.org/docs)
-- [World ID Docs](https://docs.world.org/)
-- [Tailwind CSS](https://tailwindcss.com/docs)
+* `"assign"` - use `Object.assign()` to merge the two values into one object.
+* `"overwrite"` - the second value always replaces the first.
+* `"replace"` - the second value replaces the first if the second is not `undefined`.
 
-## 🤝 Contributing
+For example:
 
-Contributions are welcome! Please follow these steps:
+```js
+const schema = new ObjectSchema({
+    name: {
+        merge: "replace",
+        validate() {}
+    }
+});
+```
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+### Named validation strategies
 
-## 📄 License
+Instead of specifying a `validate()` method, you can specify one of the following strings to use a default validation strategy:
 
-This project is licensed under the MIT License.
+* `"array"` - value must be an array.
+* `"boolean"` - value must be a boolean.
+* `"number"` - value must be a number.
+* `"object"` - value must be an object.
+* `"object?"` - value must be an object or null.
+* `"string"` - value must be a string.
+* `"string!"` - value must be a non-empty string.
 
-## 🐛 Troubleshooting
+For example:
 
-### Common Issues
+```js
+const schema = new ObjectSchema({
+    name: {
+        merge: "replace",
+        validate: "string"
+    }
+});
+```
 
-**Node.js not found**
-- Install Node.js from https://nodejs.org/
-- Restart your terminal after installation
+### Subschemas
 
-**Dependencies fail to install**
-- Clear npm cache: `npm cache clean --force`
-- Delete `node_modules` and reinstall: `rm -rf node_modules && npm install`
+If you are defining a key that is, itself, an object, you can simplify the process by using a subschema. Instead of defining `merge()` and `validate()`, assign a `schema` key that contains a schema definition, like this:
 
-**TON Connect not working**
-- Verify `tonconnect-manifest.json` is accessible
-- Check wallet compatibility
-- Ensure correct network (mainnet/testnet)
+```js
+const schema = new ObjectSchema({
+    name: {
+        schema: {
+            first: {
+                merge: "replace",
+                validate: "string"
+            },
+            last: {
+                merge: "replace",
+                validate: "string"
+            }
+        }
+    }
+});
 
-**World ID verification fails**
-- Confirm App ID is correct
-- Check World App is installed on mobile device
-- Verify action name matches configuration
+schema.validate({
+    name: {
+        first: "n",
+        last: "z"
+    }
+});
+```
 
-## 💡 Tips
+### Remove Keys During Merge
 
-- Use testnet for development
-- Test with multiple wallets
-- Monitor console for errors
-- Check network requests in DevTools
-- Keep dependencies updated
+If the merge strategy for a key returns `undefined`, then the key will not appear in the final object. For example:
 
-## 📞 Support
+```js
+const schema = new ObjectSchema({
+    date: {
+        merge() {
+            return undefined;
+        },
+        validate(value) {
+            Date.parse(value);  // throws an error when invalid
+        }
+    }
+});
 
-For questions and support:
-- Open an issue on GitHub
-- Check documentation at https://docs.ton.org/
-- Join TON Community channels
+const object1 = { date: "5/5/2005" };
+const object2 = { date: "6/6/2006" };
 
----
+const result = schema.merge(object1, object2);
 
-Built with ❤️ using TON blockchain technology
+console.log("date" in result);  // false
+```
+
+### Requiring Another Key Be Present
+
+If you'd like the presence of one key to require the presence of another key, you can use the `requires` property to specify an array of other properties that any key requires. For example:
+
+```js
+const schema = new ObjectSchema();
+
+const schema = new ObjectSchema({
+    date: {
+        merge() {
+            return undefined;
+        },
+        validate(value) {
+            Date.parse(value);  // throws an error when invalid
+        }
+    },
+    time: {
+        requires: ["date"],
+        merge(first, second) {
+            return second;
+        },
+        validate(value) {
+            // ...
+        }
+    }
+});
+
+// throws error: Key "time" requires keys "date"
+schema.validate({
+    time: "13:45"
+});
+```
+
+In this example, even though `date` is an optional key, it is required to be present whenever `time` is present.
+
+## License
+
+BSD 3-Clause
